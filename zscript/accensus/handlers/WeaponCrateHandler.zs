@@ -16,14 +16,9 @@ class AceCorpsWeaponCrateHandler : EventHandler {
         weaponCrateWhitelist.clear();
         weaponCrateBlacklist.clear();
 
-        Array<HDCoreCommand> cmds;
-        cmds.clear();
+        let cmdReader = HDCoreInfoReader(StaticEventHandler.find('HDCoreInfoReader'));
         
-        HDCore.getHDCoreInfoCommands(cmds);
-
-        if (hd_debug) forEach(cmd : cmds) console.printF(cmd.toString());
-        
-        loadWeaponCrateLists(cmds);
+        loadWeaponCrateLists(cmdReader.commands);
 
         if (hd_debug) forEach(bl : weaponCrateBlacklist) console.printF(bl.getClassName());
 
