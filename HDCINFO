@@ -1,0 +1,133 @@
+// Weapon Backpack Spawn Pool Filters
+addBPSpawnPoolFilter => { "name": "HDBlackhawk", "allowed": "#blackhawk_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackjack", "allowed": "#blackjack_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDGungnir", "allowed": "#gungnir_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDHammerhead", "allowed": "#hammerhead_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDJackdaw", "allowed": "#jackdaw_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDMajestic", "allowed": "#majestic_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDRedline", "allowed": "#redline_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDScorpion", "allowed": "#scorpion_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDViper", "allowed": "#viper_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDWyvern", "allowed": "#wyvern_allowBackpacks" }
+
+// Ammo Backpack Spawn Pool Filters
+addBPSpawnPoolFilter => { "name": "HDBlackhawkBoltRegular", "allowed": "#blackhawkBolts_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackhawkBoltIncendiary", "allowed": "#blackhawkBolts_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackhawkBoltElectric", "allowed": "#blackhawkBolts_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackhawkBoltNuclear", "allowed": "#blackhawkBolts_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackjackMag355", "allowed": "#blackjack355mag_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBlackjackMagShells", "allowed": "#blackjackshellmag_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDMajesticMag", "allowed": "#majesticmag_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDViperMag", "allowed": "#vipermag_allowBackpacks" }
+
+// Item Backpack Spawn Pool Filters
+addBPSpawnPoolFilter => { "name": "LadderLauncher", "allowed": "#ladderlauncher_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDPersonalShieldGenerator", "allowed": "#psg_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDSecretFinder", "allowed": "#secretfinder_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "PortableSuperStimpack", "allowed": "#superstim_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDFieldAssemblyKit", "allowed": "#fak_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "AssemblyCore", "allowed": "#fak_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDBoosterJets", "allowed": "#boosterJets_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "DSDInterface", "allowed": "#dsd_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDRearviewMirror", "allowed": "#rearviewmirror_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDRoomba", "allowed": "#roomba_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDSupplyBeacon", "allowed": "#supplybeacon_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDTeleporter", "allowed": "#teleporter_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDSoulCube", "allowed": "#soulcube_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDMagazineReloader", "allowed": "#magreloader_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HackedReloader", "allowed": "#hackedreloader_allowBackpacks" }
+addBPSpawnPoolFilter => { "name": "HDArmorPatchKit", "allowed": "#armorpatchkit_allowBackpacks" }
+
+// Weapon Spawn Pools
+addSpawnTableSingleEntry => { "tableName": "HDCore.RockerLauncherReplaces", "name": "BlackhawkRandom", "weight": "#blackhawk_launcher_spawn_bias", "persists": "#blackhawk_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ClipBoxReplaces", "name": "BlackjackRandom", "weight": "#blackjack_clipbox_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_hunter_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_slayer_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.BFG9000Replaces", "name": "GungnirRandom", "weight": "#gungnir_bfg_spawn_bias", "persists": "#gungnir_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ChaingunReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_chaingun_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_plasma_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ClipBoxReplaces", "name": "JackdawRandom", "weight": "#jackdaw_clipbox_spawn_bias", "persists": "#jackdaw_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.PistolReplaces", "name": "MajesticRandom", "weight": "#majestic_pistol_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_hunter_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_slayer_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "RedlineRandom", "weight": "#redline_plasma_spawn_bias", "persists": "#redline_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.BFG9000Replaces", "name": "ScorpionSpawner", "weight": "#scorpion_bfg_spawn_bias", "persists": "#scorpion_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.PistolReplaces", "name": "ViperRandom", "weight": "#viper_pistol_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "ViperRandom", "weight": "#viper_hunter_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "ViperRandom", "weight": "#viper_slayer_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_hunter_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_slayer_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "WyvernRandom", "weight": "#wyvern_plasma_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+
+// Handgun Drop Table
+addSpawnTableSingleEntry => { "tableName": "HDCore.HDHandgunRandomDropReplaces", "name": "HDMajestic", "weight": "#majestic_pistol_spawn_bias", "chance": "16", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.HDHandgunRandomDropReplaces", "name": "HDViper", "weight": "#viper_pistol_spawn_bias", "chance": "16", "persists": "#viper_persistent_spawning" }
+
+// Ammo Spawn Pools
+addSpawnTableSingleEntry => { "tableName": "HDCore.RocketReplaces", "name": "HDBlackhawkBoltBundle", "weight": "#blackhawkBolts_rocket_spawn_bias", "persists": "#blackhawkBolts_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDBlackjackMag355", "weight": "#blackjack355mag_clipmag_spawn_bias", "persists": "#blackjack355mag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ShellReplaces", "name": "HDBlackjackMagShells", "weight": "#blackjackshellmag_shell_spawn_bias", "persists": "#blackjackshellmag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDMajesticMag", "weight": "#majesticmag_clipmag_spawn_bias", "persists": "#majesticmag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDViperMag", "weight": "#vipermag_clipmag_spawn_bias", "persists": "#vipermag_persistent_spawning" }
+
+// Item Spawn Pools
+addSpawnTableSingleEntry => { "tableName": "HDCore.RocketLauncherReplaces", "name": "HDDeployableBarricade", "weight": "#deployablebarricade_launcher_spawn_bias", "persists": "#deployablebarricade_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.RocketBoxReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_rocketbox_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.CellReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_battery_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.BlueArmorReplaces", "name": "PsgRandom", "weight": "#psg_bluearmour_spawn_bias", "persists": "#psg_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.AllMapReplaces", "name": "HDSecretFinder", "weight": "#secretfinder_map_spawn_bias", "persists": "#secretfinder_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.ChainsawReplaces", "name": "HDSoulCube", "weight": "#soulcube_chainsaw_spawn_bias", "persists": "#soulcube_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.StimpackReplaces", "name": "PortableSuperStimpack", "weight": "#superstim_stimpack_spawn_bias", "persists": "#superstim_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.RocketLauncherReplaces", "name": "HDWeaponCrate", "weight": "#weaponcrate_launcher_spawn_bias", "persists": "#weaponcrate_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDCore.BackpackReplaces", "name": "DSDInterface", "weight": "#dsd_backpack_spawn_bias", "persists": "#dsd_persistent_spawning" }
+
+// Ammo Usages
+addAmmoUser => { "ammoName": "HDPistolAmmo", "name": "HDJackdaw" }
+addAmmoUser => { "ammoName": "HDRevolverAmmo", "name": "HDBlackjack" }
+addAmmoUser => { "ammoName": "HDShellAmmo", "name": "HDBlackjack" }
+addAmmoUser => { "ammoName": "HDBattery", "name": "HDGungnir" }
+addAmmoUser => { "ammoName": "HDBattery", "name": "HDHammerhead" }
+addAmmoUser => { "ammoName": "HDBattery", "name": "HDRedline" }
+addAmmoUser => { "ammoName": "HDBattery", "name": "HDTeleporter" }
+addAmmoUser => { "ammoName": "BrontornisRound", "name": "HDScorpion" }
+addAmmoUser => { "ammoName": "HD50AM_Ammo", "name": "HDViper" }
+addAmmoUser => { "ammoName": "HD500SWLightAmmo", "name": "HDMajestic" }
+addAmmoUser => { "ammoName": "HD50OMGAmmo", "name": "HDWyvern" }
+
+newAmmo => { "ammoName": "HDBlackhawkBoltRegular" }
+newAmmo => { "ammoName": "HDBlackhawkBoltIncendiary" }
+newAmmo => { "ammoName": "HDBlackhawkBoltElectric" }
+newAmmo => { "ammoName": "HDBlackhawkBoltNuclear" }
+
+addAmmoUser => { "ammoName": "HDBlackhawkBoltRegular", "name": "HDBlackhawk" }
+addAmmoUser => { "ammoName": "HDBlackhawkBoltIncendiary", "name": "HDBlackhawk" }
+addAmmoUser => { "ammoName": "HDBlackhawkBoltElectric", "name": "HDBlackhawk" }
+addAmmoUser => { "ammoName": "HDBlackhawkBoltNuclear", "name": "HDBlackhawk" }
+
+// Weapon Crate Filtering
+addWeaponCrateBlacklist => { "name": "BFG9K" }
+addWeaponCrateBlacklist => { "name": "Blooper" }
+addWeaponCrateBlacklist => { "name": "BossRifle" }
+addWeaponCrateBlacklist => { "name": "Brontornis" }
+addWeaponCrateBlacklist => { "name": "HDPistol" }
+addWeaponCrateBlacklist => { "name": "HDRevolver" }
+addWeaponCrateBlacklist => { "name": "HDRL" }
+addWeaponCrateBlacklist => { "name": "HDSMG" }
+addWeaponCrateBlacklist => { "name": "Hunter" }
+addWeaponCrateBlacklist => { "name": "LiberatorRifle" }
+addWeaponCrateBlacklist => { "name": "Lumberjack" }
+addWeaponCrateBlacklist => { "name": "Slayer" }
+addWeaponCrateBlacklist => { "name": "Thunderbuster" }
+addWeaponCrateBlacklist => { "name": "Vulcanette" }
+addWeaponCrateBlacklist => { "name": "ZM66AssaultRifle" }
+
+addWeaponCrateSpawnPoolFilter => { "name": "HDBlackhawk", "allowed": "#blackhawk_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDBlackjack", "allowed": "#blackjack_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDGungnir", "allowed": "#gungnir_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDHammerhead", "allowed": "#hammerhead_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDJackdaw", "allowed": "#jackdaw_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDMajestic", "allowed": "#majestic_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDRedline", "allowed": "#redline_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDScorpion", "allowed": "#scorpion_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDViper", "allowed": "#viper_allowBackpacks" }
+addWeaponCrateSpawnPoolFilter => { "name": "HDWyvern", "allowed": "#wyvern_allowBackpacks" }
