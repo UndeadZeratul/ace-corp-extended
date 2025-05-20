@@ -39,47 +39,47 @@ addBPSpawnPoolFilter => { "name": "HackedReloader", "allowed": "#hackedreloader_
 addBPSpawnPoolFilter => { "name": "HDArmorPatchKit", "allowed": "#armorpatchkit_allowBackpacks" }
 
 // Weapon Spawn Pools
-addSpawnTableSingleEntry => { "tableName": "HDCore.RockerLauncherReplaces", "name": "BlackhawkRandom", "weight": "#blackhawk_launcher_spawn_bias", "persists": "#blackhawk_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ClipBoxReplaces", "name": "BlackjackRandom", "weight": "#blackjack_clipbox_spawn_bias", "persists": "#blackjack_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_hunter_spawn_bias", "persists": "#blackjack_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_slayer_spawn_bias", "persists": "#blackjack_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.BFG9000Replaces", "name": "GungnirRandom", "weight": "#gungnir_bfg_spawn_bias", "persists": "#gungnir_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ChaingunReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_chaingun_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_plasma_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ClipBoxReplaces", "name": "JackdawRandom", "weight": "#jackdaw_clipbox_spawn_bias", "persists": "#jackdaw_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.PistolReplaces", "name": "MajesticRandom", "weight": "#majestic_pistol_spawn_bias", "persists": "#majestic_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_hunter_spawn_bias", "persists": "#majestic_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_slayer_spawn_bias", "persists": "#majestic_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "RedlineRandom", "weight": "#redline_plasma_spawn_bias", "persists": "#redline_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.BFG9000Replaces", "name": "ScorpionSpawner", "weight": "#scorpion_bfg_spawn_bias", "persists": "#scorpion_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.PistolReplaces", "name": "ViperRandom", "weight": "#viper_pistol_spawn_bias", "persists": "#viper_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "ViperRandom", "weight": "#viper_hunter_spawn_bias", "persists": "#viper_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "ViperRandom", "weight": "#viper_slayer_spawn_bias", "persists": "#viper_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_hunter_spawn_bias", "persists": "#wyvern_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.SuperShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_slayer_spawn_bias", "persists": "#wyvern_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.PlasmaRifleReplaces", "name": "WyvernRandom", "weight": "#wyvern_plasma_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RockerLauncherReplaces", "name": "BlackhawkRandom", "weight": "#blackhawk_launcher_spawn_bias", "persists": "#blackhawk_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipBoxReplaces", "name": "BlackjackRandom", "weight": "#blackjack_clipbox_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_hunter_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SuperShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_slayer_spawn_bias", "persists": "#blackjack_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "BFG9000Replaces", "name": "GungnirRandom", "weight": "#gungnir_bfg_spawn_bias", "persists": "#gungnir_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ChaingunReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_chaingun_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "PlasmaRifleReplaces", "name": "HammerheadRandom", "weight": "#hammerhead_plasma_spawn_bias", "persists": "#hammerhead_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipBoxReplaces", "name": "JackdawRandom", "weight": "#jackdaw_clipbox_spawn_bias", "persists": "#jackdaw_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "PistolReplaces", "name": "MajesticRandom", "weight": "#majestic_pistol_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_hunter_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SuperShotgunReplaces", "name": "MajesticRandom", "weight": "#majestic_slayer_spawn_bias", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "PlasmaRifleReplaces", "name": "RedlineRandom", "weight": "#redline_plasma_spawn_bias", "persists": "#redline_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "BFG9000Replaces", "name": "ScorpionSpawner", "weight": "#scorpion_bfg_spawn_bias", "persists": "#scorpion_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "PistolReplaces", "name": "ViperRandom", "weight": "#viper_pistol_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunReplaces", "name": "ViperRandom", "weight": "#viper_hunter_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SuperShotgunReplaces", "name": "ViperRandom", "weight": "#viper_slayer_spawn_bias", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_hunter_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SuperShotgunReplaces", "name": "WyvernRandom", "weight": "#wyvern_slayer_spawn_bias", "persists": "#wyvern_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "PlasmaRifleReplaces", "name": "WyvernRandom", "weight": "#wyvern_plasma_spawn_bias", "persists": "#wyvern_persistent_spawning" }
 
 // Handgun Drop Table
-addSpawnTableSingleEntry => { "tableName": "HDCore.HDHandgunRandomDropReplaces", "name": "HDMajestic", "weight": "#majestic_pistol_spawn_bias", "chance": "16", "persists": "#majestic_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.HDHandgunRandomDropReplaces", "name": "HDViper", "weight": "#viper_pistol_spawn_bias", "chance": "16", "persists": "#viper_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDHandgunRandomDrop", "name": "HDMajestic", "weight": "#majestic_pistol_spawn_bias", "chance": "16", "persists": "#majestic_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "HDHandgunRandomDrop", "name": "HDViper", "weight": "#viper_pistol_spawn_bias", "chance": "16", "persists": "#viper_persistent_spawning" }
 
 // Ammo Spawn Pools
-addSpawnTableSingleEntry => { "tableName": "HDCore.RocketReplaces", "name": "HDBlackhawkBoltBundle", "weight": "#blackhawkBolts_rocket_spawn_bias", "persists": "#blackhawkBolts_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDBlackjackMag355", "weight": "#blackjack355mag_clipmag_spawn_bias", "persists": "#blackjack355mag_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ShellReplaces", "name": "HDBlackjackMagShells", "weight": "#blackjackshellmag_shell_spawn_bias", "persists": "#blackjackshellmag_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDMajesticMag", "weight": "#majesticmag_clipmag_spawn_bias", "persists": "#majesticmag_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ClipMagReplaces", "name": "HDViperMag", "weight": "#vipermag_clipmag_spawn_bias", "persists": "#vipermag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RocketReplaces", "name": "HDBlackhawkBoltBundle", "weight": "#blackhawkBolts_rocket_spawn_bias", "persists": "#blackhawkBolts_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDBlackjackMag355", "weight": "#blackjack355mag_clipmag_spawn_bias", "persists": "#blackjack355mag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShellReplaces", "name": "HDBlackjackMagShells", "weight": "#blackjackshellmag_shell_spawn_bias", "persists": "#blackjackshellmag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDMajesticMag", "weight": "#majesticmag_clipmag_spawn_bias", "persists": "#majesticmag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDViperMag", "weight": "#vipermag_clipmag_spawn_bias", "persists": "#vipermag_persistent_spawning" }
 
 // Item Spawn Pools
-addSpawnTableSingleEntry => { "tableName": "HDCore.RocketLauncherReplaces", "name": "HDDeployableBarricade", "weight": "#deployablebarricade_launcher_spawn_bias", "persists": "#deployablebarricade_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.RocketBoxReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_rocketbox_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.CellReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_battery_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.BlueArmorReplaces", "name": "PsgRandom", "weight": "#psg_bluearmour_spawn_bias", "persists": "#psg_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.AllMapReplaces", "name": "HDSecretFinder", "weight": "#secretfinder_map_spawn_bias", "persists": "#secretfinder_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.ChainsawReplaces", "name": "HDSoulCube", "weight": "#soulcube_chainsaw_spawn_bias", "persists": "#soulcube_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.StimpackReplaces", "name": "PortableSuperStimpack", "weight": "#superstim_stimpack_spawn_bias", "persists": "#superstim_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.RocketLauncherReplaces", "name": "HDWeaponCrate", "weight": "#weaponcrate_launcher_spawn_bias", "persists": "#weaponcrate_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "HDCore.BackpackReplaces", "name": "DSDInterface", "weight": "#dsd_backpack_spawn_bias", "persists": "#dsd_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RocketLauncherReplaces", "name": "HDDeployableBarricade", "weight": "#deployablebarricade_launcher_spawn_bias", "persists": "#deployablebarricade_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RocketBoxReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_rocketbox_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "CellReplaces", "name": "LadderLauncher", "weight": "#ladderlauncher_battery_spawn_bias", "persists": "#ladderlauncher_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "BlueArmorReplaces", "name": "PsgRandom", "weight": "#psg_bluearmour_spawn_bias", "persists": "#psg_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "AllMapReplaces", "name": "HDSecretFinder", "weight": "#secretfinder_map_spawn_bias", "persists": "#secretfinder_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ChainsawReplaces", "name": "HDSoulCube", "weight": "#soulcube_chainsaw_spawn_bias", "persists": "#soulcube_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "StimpackReplaces", "name": "PortableSuperStimpack", "weight": "#superstim_stimpack_spawn_bias", "persists": "#superstim_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RocketLauncherReplaces", "name": "HDWeaponCrate", "weight": "#weaponcrate_launcher_spawn_bias", "persists": "#weaponcrate_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "BackpackReplaces", "name": "DSDInterface", "weight": "#dsd_backpack_spawn_bias", "persists": "#dsd_persistent_spawning" }
 
 // Ammo Usages
 addAmmoUser => { "ammoName": "HDPistolAmmo", "name": "HDJackdaw" }
