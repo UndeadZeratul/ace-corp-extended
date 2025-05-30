@@ -109,7 +109,7 @@ class AceCorpsWeaponCrateHandler : EventHandler {
         }
     }
 
-    override void worldThingSpawned(WorldEvent e) {
+    override void worldLoaded(WorldEvent e) {
 
         // Populates the main arrays if they haven't been already.
         if (!initialized) init();
@@ -117,8 +117,7 @@ class AceCorpsWeaponCrateHandler : EventHandler {
         // If the Weapon Crate Whitelist and Blacklist are both empty, quit.
         if (!weaponCrateWhitelist.size() && !weaponCrateBlacklist.size()) return;
 
-        // Handle Weapon Crate Loot Table Filtering
-        if (e.thing is 'HDWeaponCrate') handleWeaponCrateLootTable();
+        handleWeaponCrateLootTable();
     }
 
     private void handleWeaponCrateLootTable() {
