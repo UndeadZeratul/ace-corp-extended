@@ -28,7 +28,7 @@ class AceCorpsWeaponCrateHandler : EventHandler {
     void loadWeaponCrateLists(Array<HDCoreCommand> cmds) {
         forEach (cmd : cmds) {
             switch (cmd.command) {
-                case 'addWeaponCrateFilter': {
+                case 'addWeaponCrateSpawnPoolFilter': {
                     // FIXME: Find a better command/logic to handle existing CVARs
 
                     let weapon = cmd.getNameParam("name");
