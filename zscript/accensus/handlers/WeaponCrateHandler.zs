@@ -20,7 +20,13 @@ class AceCorpsWeaponCrateHandler : EventHandler {
         
         loadWeaponCrateLists(cmdReader.commands);
 
-        if (hd_debug) forEach(bl : weaponCrateBlacklist) console.printF(bl.getClassName());
+        if (hd_debug) {
+            console.printF("Weapon Crate Spawn Pool Whitelist:");
+            forEach(wl : weaponCrateWhitelist) console.printF(" * "..wl.getClassName());
+
+            console.printF("Weapon Crate Spawn Pool Blacklist:");
+            forEach(bl : weaponCrateBlacklist) console.printF(" * "..bl.getClassName());
+        }
 
         initialized = true;
     }
