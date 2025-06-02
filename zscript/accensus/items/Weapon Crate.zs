@@ -144,9 +144,10 @@ class HDWeaponCrate : HDUPK
 		DropGoods:
 			TNT1 A 1
 			{
-				class<HDWeapon> PickedWeapon = WCSpawnPool.GetValidItem();
-				if (PickedWeapon)
-				{
+				Class<HDWeapon> PickedWeapon = WCSpawnPool.GetValidItem();
+				
+				if (hd_debug) Console.printF("Dropping "..(PickedWeapon ? PickedWeapon.getClassName().."" : "Nothing"));
+				if (PickedWeapon) {
 					A_SpawnItemEx(
 						PickedWeapon,
 						0, 0, 0,
@@ -154,6 +155,9 @@ class HDWeaponCrate : HDUPK
 						random(0, 359),
 						SXF_NOCHECKPOSITION
 					);
+				} else {
+					SetStateLabel("Spawn");
+					return;
 				}
 			}
 			Stop;
