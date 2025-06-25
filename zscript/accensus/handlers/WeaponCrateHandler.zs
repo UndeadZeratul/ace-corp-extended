@@ -20,12 +20,19 @@ class AceCorpsWeaponCrateHandler : EventHandler {
         
         loadWeaponCrateLists(cmdReader.commands);
 
-        if (hd_debug) {
-            console.printF("Weapon Crate Spawn Pool Whitelist:");
-            forEach(wl : weaponCrateWhitelist) console.printF(" * "..wl.getClassName());
+        if (HDCore.ShouldLog('AceCorpExtended', LOGGING_DEBUG)) {
+            let msg = "Weapon Crate Spawn Pool Whitelist:\n";
 
-            console.printF("Weapon Crate Spawn Pool Blacklist:");
-            forEach(bl : weaponCrateBlacklist) console.printF(" * "..bl.getClassName());
+            forEach(wl : weaponCrateWhitelist) msg = msg.." * "..wl.getClassName().."\n";
+
+            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, msg);
+
+
+            msg = "Weapon Crate Spawn Pool Blacklist:\n";
+
+            forEach(bl : weaponCrateBlacklist) msg = msg.." * "..bl.getClassName().."\n";
+
+            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, msg);
         }
 
         initialized = true;
@@ -133,14 +140,14 @@ class AceCorpsWeaponCrateHandler : EventHandler {
 
         // Add all "whitelisted" entries
         foreach (wl : weaponCrateWhitelist) {
-            if (hd_debug) console.printf("Adding "..wl.getClassName().." to Weapon Crate Spawn Pool");
+            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, "Adding "..wl.getClassName().." to Weapon Crate Spawn Pool");
 
             WCSpawnPool.AddItem(wl);
         }
 
         // Remove all "blacklisted" entries
         foreach (bl : weaponCrateBlacklist) {
-            if (hd_debug) console.printf("Removing "..bl.getClassName().." from Weapon Crate Spawn Pool");
+            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, "Removing "..bl.getClassName().." from Weapon Crate Spawn Pool");
 
             WCSpawnPool.removeItem(bl);
         }

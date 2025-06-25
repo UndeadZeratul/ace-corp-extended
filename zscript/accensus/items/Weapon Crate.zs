@@ -32,11 +32,18 @@ class WCSpawnPool : EventHandler {
 	//   Returns FALSE if the item class could not be added.
 	static bool AddItem(class<HDWeapon> cls) {
 		WCSpawnPool sp = WCSpawnPool(EventHandler.Find("WCSpawnPool"));
-		if (!(sp && sp.Initialized)) { console.printf("\cgAddItem(): Weapon Crate spawn pool not found or initialized!"); return false; }
+		if (!(sp && sp.Initialized)) {
+            HDCore.Log('AceCorpExtended', LOGGING_ERROR, "AddItem(): Weapon Crate spawn pool not found or initialized!");
+
+			return false;
+		 }
+
 		if (CheckItem(cls) != -1) {
-			if (hd_debug) { console.printf(cls.GetClassName().." already in weapon crate spawn pool"); }
+            HDCore.Log('AceCorpExtended', LOGGING_WARN, cls.GetClassName().." already in weapon crate spawn pool");
+
 			return false;
 		}
+
 		let CurrWeapon = HDWeapon(GetDefaultByType(cls));
 		if (!(cls
 			&& !CurrWeapon.bWIMPY_WEAPON
@@ -46,12 +53,16 @@ class WCSpawnPool : EventHandler {
 			&& !CurrWeapon.bINVBAR
 			&& CurrWeapon.Refid != "")
 		) {
-			if (hd_debug) { console.printf(cls.GetClassName().." not a valid HDWeapon"); }
+            HDCore.Log('AceCorpExtended', LOGGING_WARN, cls.GetClassName().." not a valid HDWeapon");
+
 			return false;
 		}
+
 		// All checks passed
 		sp.ValidWeapons.Push(cls);
-		if (hd_debug) { console.printf("added "..cls.GetClassName().." to weapon crate spawn pool"); }
+
+		HDCore.Log('AceCorpExtended', LOGGING_DEBUG, "added "..cls.GetClassName().." to weapon crate spawn pool");
+
 		return true;
 	}
 
@@ -60,13 +71,21 @@ class WCSpawnPool : EventHandler {
 	//   Returns FALSE if for some reason the removal failed.
 	static bool RemoveItem(class<HDWeapon> cls) {
 		WCSpawnPool sp = WCSpawnPool(EventHandler.Find("WCSpawnPool"));
-		if (!(sp && sp.Initialized)) { console.printf("\cgRemoveItem(): Weapon Crate spawn pool not found or initialized!"); return false; }
+		if (!(sp && sp.Initialized)) {
+            HDCore.Log('AceCorpExtended', LOGGING_ERROR, "RemoveItem(): Weapon Crate spawn pool not found or initialized!");
+			
+			return false;
+		}
+
 		int index = CheckItem(cls);
 		if (index != -1) {
 			sp.ValidWeapons.Delete(index);
-			if (hd_debug) { console.printf("removed "..cls.GetClassName().." from weapon crate spawn pool"); }
+            
+			HDCore.Log('AceCorpExtended', LOGGING_DEBUG, "removed "..cls.GetClassName().." from weapon crate spawn pool");
+
 			return true;
 		}
+
 		return false;
 	}
 
@@ -75,18 +94,32 @@ class WCSpawnPool : EventHandler {
 	//   Returns -1 if the item class is not found in the spawn pool
 	static int CheckItem(class<HDWeapon> cls) {
 		WCSpawnPool sp = WCSpawnPool(EventHandler.Find("WCSpawnPool"));
-		if (!(sp && sp.Initialized)) { console.printf("\cgCheckItem(): Weapon Crate spawn pool not found or initialized!"); return false; }
-		for (int i=0; i<sp.ValidWeapons.Size(); i++) {
-			if (sp.ValidWeapons[i] is cls) { return i; }
+		if (!(sp && sp.Initialized)) {
+            HDCore.Log('AceCorpExtended', LOGGING_ERROR, "CheckItem(): Weapon Crate spawn pool not found or initialized!");
+			
+			return false;
 		}
+
+		for (int i=0; i<sp.ValidWeapons.Size(); i++) if (sp.ValidWeapons[i] is cls) return i;
+
 		return -1;
 	}
 
 	// Returns a random valid item class from the weapon crate spawn pool.
 	static class<HDWeapon> GetValidItem() {
 		WCSpawnPool sp = WCSpawnPool(EventHandler.Find("WCSpawnPool"));
-		if (!(sp && sp.Initialized)) { console.printf("\cgGetValidItem(): Weapon Crate spawn pool not found or initialized!"); return null; }
-		if (sp.ValidWeapons.Size() <= 0) { console.printf("\cgGetValidItem(): Weapon Crate spawn pool empty!"); return null; }
+		if (!(sp && sp.Initialized)) {
+            HDCore.Log('AceCorpExtended', LOGGING_ERROR, "GetValidItem(): Weapon Crate spawn pool not found or initialized!");
+			
+			return null;
+		}
+
+		if (sp.ValidWeapons.Size() <= 0) {
+            HDCore.Log('AceCorpExtended', LOGGING_WARN, "GetValidItem(): Weapon Crate spawn pool empty!");
+			
+			return null;
+		}
+
 		return sp.ValidWeapons[random(0, sp.ValidWeapons.Size() - 1)];
 	}
 }
@@ -146,7 +179,8 @@ class HDWeaponCrate : HDUPK
 			{
 				Class<HDWeapon> PickedWeapon = WCSpawnPool.GetValidItem();
 				
-				if (hd_debug) Console.printF("Dropping "..(PickedWeapon ? PickedWeapon.getClassName().."" : "Nothing"));
+	            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, Console.printF("Dropping "..(PickedWeapon ? PickedWeapon.getClassName().."" : "Nothing"));
+
 				if (PickedWeapon) {
 					A_SpawnItemEx(
 						PickedWeapon,
