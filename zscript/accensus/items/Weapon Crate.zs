@@ -179,7 +179,7 @@ class HDWeaponCrate : HDUPK
 			{
 				Class<HDWeapon> PickedWeapon = WCSpawnPool.GetValidItem();
 				
-	            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, Console.printF("Dropping "..(PickedWeapon ? PickedWeapon.getClassName().."" : "Nothing"));
+	            HDCore.Log('AceCorpExtended', LOGGING_DEBUG, "Dropping "..(PickedWeapon ? PickedWeapon.getClassName().."" : "Nothing"));
 
 				if (PickedWeapon) {
 					A_SpawnItemEx(
