@@ -39,7 +39,7 @@ addBPSpawnPoolFilter => { "name": "HackedReloader", "allowed": "#hackedreloader_
 addBPSpawnPoolFilter => { "name": "HDArmorPatchKit", "allowed": "#armorpatchkit_allowBackpacks" }
 
 // Weapon Spawn Pools
-addSpawnTableSingleEntry => { "tableName": "RockerLauncherReplaces", "name": "BlackhawkRandom", "weight": "#blackhawk_launcher_spawn_bias", "persists": "#blackhawk_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "RocketLauncherReplaces", "name": "BlackhawkRandom", "weight": "#blackhawk_launcher_spawn_bias", "persists": "#blackhawk_persistent_spawning" }
 addSpawnTableSingleEntry => { "tableName": "ClipBoxReplaces", "name": "BlackjackRandom", "weight": "#blackjack_clipbox_spawn_bias", "persists": "#blackjack_persistent_spawning" }
 addSpawnTableSingleEntry => { "tableName": "ShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_hunter_spawn_bias", "persists": "#blackjack_persistent_spawning" }
 addSpawnTableSingleEntry => { "tableName": "SuperShotgunReplaces", "name": "BlackjackRandom", "weight": "#blackjack_slayer_spawn_bias", "persists": "#blackjack_persistent_spawning" }
@@ -65,10 +65,10 @@ addSpawnTableSingleEntry => { "tableName": "HDHandgunRandomDrop", "name": "HDVip
 
 // Ammo Spawn Pools
 addSpawnTableSingleEntry => { "tableName": "RocketAmmoReplaces", "name": "HDBlackhawkBoltBundle", "weight": "#blackhawkBolts_rocket_spawn_bias", "persists": "#blackhawkBolts_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDBlackjackMag355", "weight": "#blackjack355mag_clipmag_spawn_bias", "persists": "#blackjack355mag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipReplaces", "name": "HDBlackjackMag355", "weight": "#blackjack355mag_clipmag_spawn_bias", "persists": "#blackjack355mag_persistent_spawning" }
 addSpawnTableSingleEntry => { "tableName": "ShellReplaces", "name": "HDBlackjackMagShells", "weight": "#blackjackshellmag_shell_spawn_bias", "persists": "#blackjackshellmag_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDMajesticMag", "weight": "#majesticmag_clipmag_spawn_bias", "persists": "#majesticmag_persistent_spawning" }
-addSpawnTableSingleEntry => { "tableName": "ClipMagReplaces", "name": "HDViperMag", "weight": "#vipermag_clipmag_spawn_bias", "persists": "#vipermag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipReplaces", "name": "HDMajesticMag", "weight": "#majesticmag_clipmag_spawn_bias", "persists": "#majesticmag_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ClipReplaces", "name": "HDViperMag", "weight": "#vipermag_clipmag_spawn_bias", "persists": "#vipermag_persistent_spawning" }
 
 // Item Spawn Pools
 addSpawnTableSingleEntry => { "tableName": "RocketLauncherReplaces", "name": "HDDeployableBarricade", "weight": "#deployablebarricade_launcher_spawn_bias", "persists": "#deployablebarricade_persistent_spawning" }
