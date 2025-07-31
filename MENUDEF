@@ -847,7 +847,7 @@ OptionMenu "AceCorpMenuItems"{
 	StaticText ""
     Submenu "$TAG_LADDERLAUNCHER", "ladlauncherSpawning", 0, 1
 	StaticText ""
-    Submenu "$TAG_PSG", "psgSpawning", 0, 1
+    Submenu "$TAG_PSH", "psgSpawning", 0, 1
 	StaticText ""
     Submenu "$TAG_SECRETFINDER", "secretfinderSpawning", 0, 1
 	StaticText ""
