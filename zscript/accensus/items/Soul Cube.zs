@@ -586,7 +586,7 @@ class HDSoulCube : HDWeapon
 
 	private action clearscope int A_GetMaxFrag()
 	{
-		int extra = AceCore.CheckForItem(invoker.owner, "HDArcanumTome") ? 10 : 5;
+		int extra = HDCore.checkForItem(invoker.owner, 'HDArcanumTome') ? 10 : 5;
 		return 20 + extra * A_GetCubeLevel();
 	}
 
@@ -881,16 +881,8 @@ class HDSoulCube : HDWeapon
 				if (PressingFire() || PressingAltfire())
 				{
 					int cubeLevel = A_GetCubeLevel() + 1;
-					bool hasTome = AceCore.CheckForItem(self, "HDArcanumTome");
-					bool overcharged = invoker.WeaponStatus[SCProp_Frag] > A_GetMaxFrag();
-					if (overcharged)
-					{
-						cubeLevel++;
-					}
-					if (hasTome)
-					{
-						cubeLevel++;
-					}
+					if (invoker.WeaponStatus[SCProp_Frag] > A_GetMaxFrag()) cubeLevel++;
+					if (HDCore.checkForItem(self, 'HDArcanumTome')) cubeLevel++;
 
 					switch (invoker.WeaponStatus[SCProp_Mode])
 					{
