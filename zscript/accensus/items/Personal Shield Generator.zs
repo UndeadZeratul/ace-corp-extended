@@ -139,7 +139,7 @@ class HDPersonalShieldGenerator : HDWeapon
 	override void AttachToOwner(Actor other)
 	{
 		Super.AttachToOwner(other);
-		other.A_GiveInventory('HDPersonalShield');
+		HDF.give(other, 'HDPersonalShield');
 		A_StopSound(18);
 	}
 

@@ -168,7 +168,7 @@ class FAK_RL_Magazine : FAK_Upgrade
 	{
 		if (wpn.WeaponStatus[RLS_MAG] > 0)
 		{
-			wpn.owner.A_GiveInventory('HDRocketAmmo', wpn.WeaponStatus[RLS_MAG]);
+			HDF.give(wpn.owner, 'HDRocketAmmo', wpn.WeaponStatus[RLS_MAG]);
 			wpn.WeaponStatus[RLS_MAG] = 0;
 		}
 		wpn.WeaponStatus[RLS_STATUS] |= RLF_NOMAG;

@@ -749,7 +749,7 @@ class HDSoulCube : HDWeapon
 					for (int i = 0; i < pList.Size(); ++i)
 					{
 						let plr = pList[i];
-						plr.A_GiveInventory("HDFireDouse", 20);
+						HDF.give(plr, 'HDFireDouse', 20);
 						if (plr.incaptimer > 0)
 						{
 							plr.incaptimer = max(plr.incaptimer - (cubeLevel + 1), 0);
@@ -941,7 +941,7 @@ class HDSoulCube : HDWeapon
 									{
 										plr.A_SpawnParticle(0x44FF44, SPF_RELATIVE, random(35, 70), random(2, 4), random(0, 359), random(8, 42), 0, frandom(0, plr.height), 0, 0, frandom(0.5, 3), 0, 0, frandom(-0.05, 0));
 									}
-									plr.A_GiveInventory("ShieldCore", 1);
+									HDF.give(plr, 'ShieldCore');
 									A_GainExperience(20);
 								}
 
