@@ -459,7 +459,7 @@ class DSDInterface : HDBackpack
 
 		if (WeaponStatus[DSDProp_Battery] > -1)
 		{
-			sb.DrawImage(AceCore.GetBatteryColor(WeaponStatus[DSDProp_Battery]), (0, BaseOffset - 5), sb.DI_SCREEN_CENTER | sb.DI_ITEM_CENTER_BOTTOM, box: (-1, 20), scale: (2.0, 2.0));
+			sb.DrawImage(HDCore.GetBatteryIcon(WeaponStatus[DSDProp_Battery]), (0, BaseOffset - 5), sb.DI_SCREEN_CENTER | sb.DI_ITEM_CENTER_BOTTOM, box: (-1, 20), scale: (2.0, 2.0));
 		}
 
 		sb.DrawString(sb.pSmallFont, StringTable.Localize("$DSD_TOP"), (0, BaseOffset), sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_CENTER);

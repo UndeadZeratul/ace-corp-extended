@@ -32,7 +32,7 @@ class HDHammerhead : HDCellWeapon
 		double heatFac = WeaponStatus[HHProp_Heat] / double(A_GetMaxHeat());
 		if (heatFac > 1.0 && owner && random(1, 100) <= 100 * (heatFac - 1))
 		{
-			owner.A_GiveInventory('Heat', 5);
+			HDF.give(owner, 'Heat', 5);
 		}
 
 		/*int active = A_GetActiveBatteryCount(true);
@@ -619,7 +619,7 @@ class HammerheadPlasmaProjectile : SlowProjectile
 		if (hitActor)
 		{
 			hitActor.DamageMobj(self, target, random(40, 50) * Charge, 'Plasma');
-			hitActor.A_GiveInventory('Heat', 25 * Charge);
+			HDF.give(hitActor, 'Heat', 25 * Charge);
 		}
 		ExplodeMissile(hitLine, null);
 	}

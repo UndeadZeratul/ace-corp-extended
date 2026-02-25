@@ -139,7 +139,7 @@ class HDPersonalShieldGenerator : HDWeapon
 	override void AttachToOwner(Actor other)
 	{
 		Super.AttachToOwner(other);
-		other.A_GiveInventory('HDPersonalShield');
+		HDF.give(other, 'HDPersonalShield');
 		A_StopSound(18);
 	}
 
@@ -182,10 +182,20 @@ class HDPersonalShieldGenerator : HDWeapon
 			int tery = WeaponStatus[PSProp_Battery1 + i];
 			if (tery > -1)
 			{
-				string icon; int fontCol;
-				[icon, fontCol] = AceCore.GetBatteryColor(tery);
-				sb.DrawImage(icon, (-24, -11 + 15 * i) + bob, sb.DI_SCREEN_CENTER | sb.DI_ITEM_RIGHT | sb.DI_ITEM_VCENTER, box: (-1, 15));
-				sb.DrawString(sb.mAmountFont, sb.FormatNumber(WeaponStatus[PSProp_Battery1 + i], 1, 2), (-22, -8 + 15 * i) + bob, sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_RIGHT, fontCol);
+				sb.DrawImage(
+					HDCore.GetBatteryIcon(tery),
+					(-24, -11 + 15 * i) + bob,
+					sb.DI_SCREEN_CENTER|sb.DI_ITEM_RIGHT|sb.DI_ITEM_VCENTER,
+					box: (-1, 15)
+				);
+
+				sb.DrawString(
+					sb.mAmountFont,
+					sb.FormatNumber(WeaponStatus[PSProp_Battery1 + i], 1, 2),
+					(-22, -8 + 15 * i) + bob,
+					sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_RIGHT,
+					HDCore.GetBatteryFontColor(tery)
+				);
 			}
 		}
 
@@ -1024,7 +1034,7 @@ class HDPersonalShield : HDDamageHandler
 			int bat = SGen.WeaponStatus[SGen.PSProp_Battery1 + i];
 			if (bat > -1)
 			{
-				sb.DrawImage(AceCore.GetBatteryColor(bat), (99, -23 + 8 * i), sb.DI_ITEM_RIGHT | sb.DI_ITEM_VCENTER | gzflags, box: (-1, 7));
+				sb.DrawImage(HDCore.GetBatteryIcon(bat), (99, -23 + 8 * i), sb.DI_ITEM_RIGHT | sb.DI_ITEM_VCENTER | gzflags, box: (-1, 7));
 			}
 		}
 	}
