@@ -1,4 +1,4 @@
-const HDCONST_WCSPAWNPOOLEVENT = HDCONST_BPSPAWNPOOLEVENT + 1;
+// const HDCONST_WCSPAWNPOOLEVENT = HDCONST_BPSPAWNPOOLEVENT + 1;
 
 class WCSpawnPool : HDCoreEventHandler {
 
@@ -7,13 +7,13 @@ class WCSpawnPool : HDCoreEventHandler {
 
     private Array<class <HDWeapon> > ValidWeapons;
 
-    override void OnRegister() {
-        // Ideally this should have the event handler run BEFORE any others.
-        // Modders: Any event handlers meant to run at world load should have
-        //          an order number of HDCONST_WCSPAWNPOOLEVENT+1 or higher!
-        //          (default is zero so this should almost never be a problem)
-        SetOrder(HDCONST_WCSPAWNPOOLEVENT);
-    }
+    // override void OnRegister() {
+    //     // Ideally this should have the event handler run BEFORE any others.
+    //     // Modders: Any event handlers meant to run at world load should have
+    //     //          an order number of HDCONST_WCSPAWNPOOLEVENT+1 or higher!
+    //     //          (default is zero so this should almost never be a problem)
+    //     SetOrder(HDCONST_WCSPAWNPOOLEVENT);
+    // }
 
     override void beforeProcessCommands() {
         weaponWhiteList.clear();
