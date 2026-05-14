@@ -771,7 +771,7 @@ class HDPersonalShield : HDDamageHandler
 		if (Amount == 0 || !owner || (flags & (DMG_NO_FACTOR | DMG_FORCED)) || !inflictor || inflictor == owner || inflictor is 'HDBulletActor'
 			|| mod == 'bleedout' || (!env && (mod == 'hot' || mod == 'cold')) || mod == 'maxhpdrain' || mod == 'internal' || mod == 'holy' || mod == 'staples' || mod == 'Slime'
 			|| AbsAngle(owner.angle, owner.AngleTo(inflictor)) > SGen.GetShieldArc() / 2.0
-			|| source && source.bISMONSTER && owner.Distance2D(source) < (owner.radius * 2 + source.meleerange))
+			|| source && source.bISMONSTER && owner.Distance2DSquared(source) < (owner.radius * 2 + source.meleerange) ** 2)
 		{
 			/*if (inflictor == owner) { Console.Printf("self damage"); }
 			if (mod == 'bleedout' || (!env && (mod == 'hot' || mod == 'cold')) || mod == 'maxhpdrain' || mod == 'internal' || mod == 'holy' || mod == 'staples' || mod == 'Slime') { Console.Printf("damtype bypass"); }
@@ -779,7 +779,7 @@ class HDPersonalShield : HDDamageHandler
 			if (!inflictor) { Console.Printf("no inflictor"); }
 			if ((flags & (DMG_NO_FACTOR | DMG_FORCED))) { Console.Printf("forced"); }
 			if (AbsAngle(owner.angle, owner.AngleTo(inflictor)) > SGen.GetShieldArc() / 2.0) { Console.Printf("over angle"); }
-			if (source && source.bISMONSTER && owner.Distance3D(source) < (owner.radius + source.radius) * 1.5) { Console.Printf("too close"); }*/
+			if (source && source.bISMONSTER && owner.Distance3DSquared(source) < (owner.radius + source.radius) * 1.5 ** 2) { Console.Printf("too close"); }*/
 			
 			return damage, mod, flags, towound, toburn, tostun, tobreak;
 		}
