@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.4.0] - 2026-05-15
+
 ## [v1.3.0] - 2024-02-09
 
 ### Added
@@ -94,7 +96,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     -   Viper, added in (#9).
     -   Wyvern, added in (#10).
 
-[Unreleased]: https://github.com/HDest-Community/ace-corp-extended/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/HDest-Community/ace-corp-extended/compare/v1.4.0...HEAD
+
+[v1.4.0]: https://github.com/HDest-Community/ace-corp-extended/compare/v1.3.0...v1.4.0
 
 [v1.3.0]: https://github.com/HDest-Community/ace-corp-extended/compare/v1.2.0...v1.3.0
 
