@@ -101,7 +101,7 @@ class DSDInterface : HDStorageItem {
 
 	override void OnExtract(Inventory item, Vector3 pos) {
 		if (!weaponStatus[DSDPROP_MERGING]) {
-		Spawn("DSDSpawnEffect", pos);
+			Spawn("DSDSpawnEffect", pos);
 			weaponStatus[DSDPROP_BATTERY] -= 1;
 
 			// owner.player.readyWeapon.A_SetTics(GetOperationSpeed(item, DSDACT_EXTRACT));
