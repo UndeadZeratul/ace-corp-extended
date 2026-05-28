@@ -12,7 +12,7 @@ class HDWeaponCrate : HDUPK
 
 	override bool OnGrab(Actor other)
 	{
-		if (Distance3D(picktarget) <= 50) {
+		if (Distance3DSquared(picktarget) <= 50 ** 2) {
 			if (UseTimer <= 0) {
 				UseTimer = 10;
 				vel.z = 2;

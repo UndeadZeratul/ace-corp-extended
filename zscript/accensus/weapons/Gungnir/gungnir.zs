@@ -896,7 +896,7 @@ class GungnirRaySegment : Actor
 		}
 		if (target)
 		{
-			double dist = Distance3D(target);
+			double dist = Distance3DSquared(target);
 			alpha += 0.00075 * dist;
 		}
 	}

@@ -647,7 +647,7 @@ class HDSoulCube : HDWeapon
 					double oldAngle = invoker.Angle;
 					if (invoker.Destination)
 					{
-						if (invoker.Distance2D(invoker.Destination) > 40 || abs(invoker.pos.z - invoker.Destination.pos.z) > 20)
+						if (invoker.Distance2DSquared(invoker.Destination) > 40 ** 2 || abs(invoker.pos.z - invoker.Destination.pos.z) > 20)
 						{
 							double pToDest = AceCore.PitchTo(invoker, invoker.Destination);
 
@@ -700,7 +700,7 @@ class HDSoulCube : HDWeapon
 					while (it.Next())
 					{
 						Actor a = it.thing;
-						if (Distance3D(a) > MaxRange || a.Health <= 0 || !CheckSight(a, SF_SEEPASTSHOOTABLELINES | SF_IGNOREVISIBILITY))
+						if (Distance3DSquared(a) > MaxRange**2 || a.Health <= 0 || !CheckSight(a, SF_SEEPASTSHOOTABLELINES | SF_IGNOREVISIBILITY))
 						{
 							continue;
 						}
@@ -933,7 +933,7 @@ class HDSoulCube : HDWeapon
 								for (int i = 0; i < MAXPLAYERS; ++i)
 								{
 									let plr = players[i].mo;
-									if (!plr || plr != self && (plr.Distance3D(self) > MaxRange || !CheckSight(plr, SF_SEEPASTSHOOTABLELINES | SF_IGNOREVISIBILITY)))
+									if (!plr || plr != self && (plr.Distance3DSquared(self) > MaxRange ** 2 || !CheckSight(plr, SF_SEEPASTSHOOTABLELINES | SF_IGNOREVISIBILITY)))
 									{
 										continue;
 									}

@@ -120,7 +120,7 @@ class HDDeployedBarricade : HDActor
 
 	override bool Used(Actor user)
 	{
-		if (!Deployed || Distance3D(user) > 50)
+		if (!Deployed || Distance3DSquared(user) > 50**2)
 		{
 			return false;
 		}
