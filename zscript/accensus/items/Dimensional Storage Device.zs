@@ -203,22 +203,27 @@ class DSDInterface : HDStorageItem {
 
 	// TODO: Re-implement HUD Logic
 	override void DrawHUDStuff(HDStatusBar sb, HDWeapon hdw, HDPlayerPawn hpl) {
-		super.DrawHUDStuff(sb, hdw, hpl);
 
-		int bofs = -80;
+		int bofs = -120;
+		int lnh=SmallFont.GetHeight()+3;
 
 		if (weaponStatus[DSDPROP_BATTERY] > -1)
 		{
-			sb.DrawImage(HDCore.GetBatteryIcon(weaponStatus[DSDPROP_BATTERY]), (0, bofs), sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER_BOTTOM, box: (-1, 20), scale: (2.0, 2.0));
+			sb.DrawImage(HDCore.GetBatteryIcon(weaponStatus[DSDPROP_BATTERY]), (0, bofs + 40), sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER_BOTTOM, box: (-1, 20), scale: (2.0, 2.0));
 		}
 
 	// 	sb.DrawString(sb.pSmallFont, StringTable.Localize("$DSD_TOP"), (0, BaseOffset), sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_CENTER);
 	// 	sb.DrawString(sb.pSmallFont, Stringtable.Localize("$BACKPACK_TOTALBULK")..itemBulk.."/"..maxCapacity.."\c-", (0, BaseOffset + 10), sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_CENTER);
 
 		if (weaponStatus[DSDPROP_BATTERY] > 0) {
-			sb.DrawString(sb.pSmallFont, ""..(weaponStatus[DSDPROP_BATTERY]), (10, bofs - 4), sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_CENTER, HDCore.GetBatteryFontColor(weaponStatus[DSDPROP_BATTERY]));
-		} else if (Level.time % 50 < 25) {
-			sb.DrawString(sb.pSmallFont, StringTable.Localize("$DSD_INOPERABLE"), (0, bofs + 20), sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_CENTER, Font.CR_RED);
+			super.DrawHUDStuff(sb, hdw, hpl);
+
+			sb.DrawString(sb.pSmallFont, ""..(weaponStatus[DSDPROP_BATTERY]), (10, bofs - 4 + 40), sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_CENTER, HDCore.GetBatteryFontColor(weaponStatus[DSDPROP_BATTERY]));
+		} else {
+			sb.DrawString(sb.pSmallFont, string.format(Stringtable.Localize("$BACKPACK_TOP"),gettag()), (0,bofs), sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_CENTER);
+			sb.DrawString(sb.pSmallFont, Stringtable.Localize("$BACKPACK_TOTALBULK")..int(itembulk).."\c-", (0,bofs+lnh), sb.DI_SCREEN_CENTER | sb.DI_TEXT_ALIGN_CENTER);
+
+			if (Level.time % 50 < 25) sb.DrawString(sb.pSmallFont, StringTable.Localize("$DSD_INOPERABLE"), (0, bofs + 20 + 40), sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_CENTER, Font.CR_RED);
 		}
 
 	// 	BaseOffset += 40;
