@@ -894,11 +894,9 @@ class GungnirRaySegment : Actor
 				frandom(-0.10, 0.10), frandom(-0.10, 0.10), frandom(-0.10, 0.10),
 				frandom(-0.005, 0.005), frandom(-0.005, 0.005), frandom(-0.005, 0.005));
 		}
-		if (target)
-		{
-			double dist = Distance3DSquared(target);
-			alpha += 0.00075 * dist;
-		}
+
+		// 0.00075 ** 2 == 0.0000005625
+		if (target) alpha += 0.0000005625 * Distance3DSquared(target);
 	}
 
 	private double FadeSpeed;
