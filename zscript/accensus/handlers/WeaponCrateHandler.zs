@@ -1,93 +1,153 @@
-// const HDCONST_WCSPAWNPOOLEVENT = HDCONST_BPSPAWNPOOLEVENT + 1;
-
 class WCSpawnPool : HDCoreEventHandler {
 
-    Array<name> weaponWhiteList;
-    Array<name> weaponBlackList;
+    Array<name> whitelist;
+    Array<name> blacklist;
 
     private Array<class <HDWeapon> > ValidWeapons;
 
     override void beforeProcessCommands() {
-        weaponWhiteList.clear();
-        weaponBlackList.clear();
+        whitelist.clear();
+        blacklist.clear();
 
         ValidWeapons.clear();
+
+        cmdWhitelist.push('configureWCSpawnPoolHandler');
+        cmdWhitelist.push('addWeaponCrateFilter');
+        cmdWhitelist.push('addWeaponCrateWhitelist');
+        cmdWhitelist.push('removeWeaponCrateWhitelist');
+        cmdWhitelist.push('clearWeaponCrateWhitelist');
+        cmdWhitelist.push('addWeaponCrateBlacklist');
+        cmdWhitelist.push('removeWeaponCrateBlacklist');
+        cmdWhitelist.push('clearWeaponCrateBlacklist');
     }
 
     override void processCommand(HDCoreCommand cmd) {
         switch (cmd.command) {
-            case 'addWeaponCrateFilter': {
-                // FIXME: Find a better command/logic to handle existing CVARs
-
-                let weapon = cmd.getNameParam("name");
-
-                // If the filter entry is allowed, remove from blacklist,
-                // Otherwise add to blacklist.
-                let index = weaponBlackList.find(weapon);
-                if (cmd.getBoolParam("allowed")) {
-                    if (index < weaponBlackList.size()) weaponBlackList.delete(index);
-                } else {
-                    if (index >= weaponBlackList.size()) weaponBlackList.push(weapon);
-                }
-
+            case 'configureWCSpawnPoolHandler':
+                processConfigureWeaponCrateSpawnPoolHandlerCmd(cmd);
                 break;
-            }
-            case 'addWeaponCrateWhitelist': {
-                let weapon = cmd.getNameParam("name");
-
-                if (weaponWhiteList.find(weapon) >= weaponWhiteList.size()) weaponWhiteList.push(weapon);
-
+            case 'addWeaponCrateFilter':
+                processAddWeaponCrateFilterCmd(cmd);
                 break;
-            }
-            case 'removeWeaponCrateWhitelist': {
-                let weapon = cmd.getNameParam("name");
-
-                let index = weaponWhiteList.find(weapon);
-                if (index < weaponWhiteList.size()) weaponWhiteList.delete(index);
-
+            case 'addWeaponCrateWhitelist':
+                processAddWeaponCrateWhitelistCmd(cmd);
                 break;
-            }
-            case 'clearWeaponCrateWhitelist': {
-                weaponWhiteList.clear();
+            case 'removeWeaponCrateWhitelist':
+                processRemoveWeaponCrateWhitelistCmd(cmd);
                 break;
-            }
-            case 'addWeaponCrateBlacklist': {
-                let weapon = cmd.getNameParam("name");
-
-                if (weaponBlackList.find(weapon) >= weaponBlackList.size()) weaponBlackList.push(weapon);
-
+            case 'clearWeaponCrateWhitelist':
+                processClearWeaponCrateWhitelistCmd(cmd);
                 break;
-            }
-            case 'removeWeaponCrateBlacklist': {
-                let weapon = cmd.getNameParam("name");
-
-                let index = weaponBlackList.find(weapon);
-                if (index < weaponBlackList.size()) weaponBlackList.delete(index);
-
+            case 'addWeaponCrateBlacklist':
+                processAddWeaponCrateBlacklistCmd(cmd);
                 break;
-            }
-            case 'clearWeaponCrateBlacklist': {
-                weaponBlackList.clear();
+            case 'removeWeaponCrateBlacklist':
+                processRemoveWeaponCrateBlacklistCmd(cmd);
                 break;
-            }
+            case 'clearWeaponCrateBlacklist':
+                processClearWeaponCrateBlacklistCmd(cmd);
+                break;
             default:
                 break;
         }
     }
 
+    void processConfigureWeaponCrateSpawnPoolHandlerCmd(HDCoreCommand cmd) {
+
+        if (cmd.getBoolParam("clean")) {
+            processClearWeaponCrateWhitelistCmd(cmd);
+            processClearWeaponCrateBlacklistCmd(cmd);
+        }
+
+        Array<name> namesArr;
+
+        // Add all configured Blacklist Entries
+        cmd.getArrayNameParam("blacklist", namesArr);
+        forEach (name : namesArr) addBlacklist(name);
+
+        // Add all configured whitelist Entries
+        cmd.getArrayNameParam("whitelist", namesArr);
+        forEach (name : namesArr) addWhitelist(name);
+    }
+
+    void processAddWeaponCrateFilterCmd(HDCoreCommand cmd) {
+
+        // FIXME: Find a better command/logic to handle existing CVARs
+
+        // If the filter entry is allowed, remove from blacklist,
+        // Otherwise add to blacklist.
+        if (cmd.getBoolParam("allowed")) {
+            processRemoveWeaponCrateBlacklistCmd(cmd);
+        } else {
+            processAddWeaponCrateBlacklistCmd(cmd);
+        }
+    }
+
+    void processAddWeaponCrateWhitelistCmd(HDCoreCommand cmd) {
+        
+        addWhitelist(cmd.getNameParam("name"));
+    }
+
+    void processRemoveWeaponCrateWhitelistCmd(HDCoreCommand cmd) {
+        
+        removeWhitelist(cmd.getNameParam("name"));
+    }
+
+    void processClearWeaponCrateWhitelistCmd(HDCoreCommand cmd) {
+
+        whitelist.clear();
+    }
+
+    void processAddWeaponCrateBlacklistCmd(HDCoreCommand cmd) {
+        
+        addBlacklist(cmd.getNameParam("name"));
+    }
+
+    void processRemoveWeaponCrateBlacklistCmd(HDCoreCommand cmd) {
+        
+        removeBlacklist(cmd.getNameParam("name"));
+    }
+
+    void processClearWeaponCrateBlacklistCmd(HDCoreCommand cmd) {
+
+        blacklist.clear();
+    }
+
+    void addWhitelist(name name) {
+        
+        if (whitelist.find(name) >= whitelist.size()) whitelist.push(name);
+    }
+
+    void removeWhitelist(name name) {
+        
+        let index = whitelist.find(name);
+        if (index < whitelist.size()) whitelist.delete(index);
+    }
+
+    void addBlacklist(name name) {
+
+        if (blacklist.find(name) >= blacklist.size()) blacklist.push(name);
+    }
+
+    void RemoveBlacklist(name name) {
+        
+        let index = blacklist.find(name);
+        if (index < blacklist.size()) blacklist.delete(index);
+    }
+
     override void afterProcessCommands() {
-        if (HDCore.ShouldLog('AceCorpExtended', LOGGING_DEBUG)) {
+        if (HDCore.ShouldLog('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG)) {
 
-            let msg = "Weapon Crate Spawn Pool Whitelist:\n";
+            let msg = "Configured Weapon Crate Whitelist:\n";
 
-            forEach(wl : weaponWhiteList) msg = msg.." * "..wl.."\n";
+            forEach(wl : whitelist) msg = msg.." * "..wl.."\n";
 
             HDCore.Log('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG, msg);
 
 
-            msg = "Weapon Crate Spawn Pool Blacklist:\n";
+            msg = "Configured Weapon Crate Blacklist:\n";
 
-            forEach(bl : weaponBlackList) msg = msg.." * "..bl.."\n";
+            forEach(bl : blacklist) msg = msg.." * "..bl.."\n";
 
             HDCore.Log('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG, msg);
         }
@@ -132,21 +192,21 @@ class WCSpawnPool : HDCoreEventHandler {
             return false;
         }
 
-        forEach (bl : sp.weaponBlackList) if (cls is bl) {
+        forEach (bl : sp.blacklist) if (cls is bl) {
             HDCore.Log('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG, "AddItem(): "..cls.GetClassName().." blacklisted");
 
             return false;
         }
 
         let whitelisted = false;
-        forEach (wl : sp.weaponWhiteList) if (cls is wl) {
+        forEach (wl : sp.whitelist) if (cls is wl) {
             HDCore.Log('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG, "AddItem(): "..cls.GetClassName().." whitelisted");
 
             whitelisted = true;
             break;
         }
 
-        if (sp.weaponWhiteList.size() && !whitelisted) {
+        if (sp.whitelist.size() && !whitelisted) {
             HDCore.Log('AceCorpExtended.WCSpawnPool', LOGGING_DEBUG, "AddItem(): "..cls.GetClassName().." whitelist exists, not whitelisted");
 
             return false;
@@ -154,7 +214,7 @@ class WCSpawnPool : HDCoreEventHandler {
 
         let CurrWeapon = HDWeapon(GetDefaultByType(cls));
         if (
-            !sp.weaponWhiteList.size()
+            !sp.whitelist.size()
             && !(
                 cls
                 && !CurrWeapon.bWIMPY_WEAPON
