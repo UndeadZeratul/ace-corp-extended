@@ -34,7 +34,7 @@ class HDArmorPatchKit : HDWeapon
 	override void LoadoutConfigure(string input) { WeaponStatus[KProp_Durability] = KitDurability; }
 
 	protected int GetSelectedArmorDurability() {
-		let Armor = HDArmour(owner.FindInventory("HDArmour"));
+		let Armor = HDArmour(owner.FindInventory("HDArmour", true));
 		return Armor
 			? Armor.Mags[Armor.Mags.Size() - 1]
 			: -1;
@@ -64,57 +64,78 @@ class HDArmorPatchKit : HDWeapon
 		bob.y += Offset;
 		int BaseYOffset = -70;
 		
-		sb.DrawImage("APKTA0", (0, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_CENTER, 1.0, scale:(2, 2));
+		sb.DrawImage("APKTA0", (0, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER, 1.0, scale:(2, 2));
 
-		if (Offset > 95)
-		{
-			return;
-		}
+		if (Offset > 95) return;
 
-		string GreenPatchIcon = TexMan.GetName(GetDefaultByType("HDAPK_GarrisonPatch").Icon);
-		string BattlePatchIcon = TexMan.GetName(GetDefaultByType("HDAPK_BattlePatch").Icon);
-		double GreenAlpha = 0.6, BlueAlpha = 0.6;
+		// TODO: separate back into per-patch alpha
+		double patchAlpha = 0.6;
 
-		// [Ace] The Armor pointer technically refers to Armor.Mags[Mags.Size() - 1].
-		let Armor = HDArmour(hpl.FindInventory("HDArmour"));
-		if (Armor) {
-			int ArmorCount = Armor.Mags.Size();
-			for (int i = 0; i < 3 && i < ArmorCount; ++i) {
-				bool IsMega = HDCore.isChildClass(Armor.getClass(), 'BattleArmour');
+		Array<HDArmour> Armors;
 
-				string ArmorFullIcon = IsMega ? "ARMCA0" : "ARMSA0";
-				string ArmorEmptyIcon = IsMega ? "ARMER1" : "ARMER0";
-				int ArmorDurability = Armor.Mags[i] > 1000 ? Armor.Mags[i] - 1000 : Armor.Mags[i];
+		for (let i = hpl.inv; i != null; i = i.inv) if (i is 'HDArmour') Armors.push(HDArmour(i));
 
-				bool IsSelected = i == ArmorCount - 1;
+		if (Armors.size()) {
+			int YOffset = BaseYOffset - (Armors.size() * 8);
 
-				int XOffset = IsSelected ? 0 : (i == 0 ? 40 : -40);
-				sb.DrawBar(ArmorFullIcon, ArmorEmptyIcon, ArmorDurability, IsMega ? 70 : 144, (XOffset, BaseYOffset - 60) + bob, -1, 2, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_CENTER, IsSelected ? 1.0 : 0.6);
+			for (let i = Armors.size() - 1; i >= 0; i--) {
+				let Armor = Armors[i];
+				int ArmorCount = Armor.Mags.Size();
 
-				if (IsSelected) {
-					sb.DrawString(sb.pSmallFont, IsMega ? "Battle Armor" : "Garrison Armor", (0, BaseYOffset - 45) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_CENTER, IsMega ? Font.CR_BLUE : Font.CR_GREEN);
-					sb.DrawString(sb.pSmallFont, sb.FormatNumber(ArmorDurability, 1, 3), (0, BaseYOffset - 35) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_CENTER, Font.CR_WHITE);
+				YOffset += 8;
 
-					if (IsMega) {
-						BlueAlpha = 1.0;
-					} else {
-						GreenAlpha = 1.0;
+				for (int j = ArmorCount - 1; j >= 0 ; j--) {
+					let wornCls = (Class<Actor>)(Armor.getClassName().."worn");
+					let wornDefs = HDArmourWorn(GetDefaultByType(wornCls));
+
+					bool IsSelected = i == 0 && j == ArmorCount - 1;
+
+					int XOffset = IsSelected ? 0 : ((j % 2 ? -1 : 1) * 16 * j * 0.5);
+
+					HDCore.DrawBar(
+						sb,
+						wornDefs.armoursprite, wornDefs.armourback,
+						1.0 * Armor.Mags[j] / Armor.maxperunit,
+						(XOffset, YOffset - 60) + bob,
+						sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER|(Armor.bDROPTRANSLATION ? sb.DI_TRANSLATABLE : 0),
+						DRAWBAR_SN,
+						alpha: IsSelected ? 1.0 : 0.6
+					);
+
+					if (IsSelected) {
+						sb.DrawString(
+							sb.pSmallFont,
+							Armor.getTag(),
+							(0, BaseYOffset - 45) + bob,
+							sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_CENTER,
+							Font.CR_WHITE // IsMega ? Font.CR_BLUE : Font.CR_GREEN
+						);
+
+						sb.DrawString(
+							sb.pSmallFont,
+							sb.FormatNumber(Armor.Mags[j], 1, 3),
+							(0, BaseYOffset - 35) + bob,
+							sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_CENTER,
+							Font.CR_WHITE
+						);
+
+						patchAlpha = 1.0;
 					}
 				}
 			}
 		} else {
-			sb.DrawString(sb.pSmallFont, "No armors found.", (0, BaseYOffset - 40) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_CENTER, Font.CR_GOLD);
+			sb.DrawString(sb.pSmallFont, "No armors found.", (0, BaseYOffset - 40) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_CENTER, Font.CR_GOLD);
 		}
 
-		sb.DrawImage(GreenPatchIcon, (-60, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_CENTER, GreenAlpha, scale:(2, 2));
-		sb.DrawString(sb.pSmallFont, sb.FormatNumber(sb.GetAmount("HDAPK_GarrisonPatch"), 1, 4), (-60, BaseYOffset + 10) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_CENTER, Font.CR_WHITE, GreenAlpha);
+		sb.DrawImage(TexMan.GetName(GetDefaultByType("HDAPK_GarrisonPatch").Icon), (-60, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER, patchAlpha, scale:(2, 2));
+		sb.DrawString(sb.pSmallFont, sb.FormatNumber(sb.GetAmount("HDAPK_GarrisonPatch"), 1, 4), (-60, BaseYOffset + 10) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_CENTER, Font.CR_WHITE, patchAlpha);
 
-		sb.DrawImage(BattlePatchIcon, (60, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_CENTER, BlueAlpha, scale:(2, 2));
-		sb.DrawString(sb.pSmallFont, sb.FormatNumber(sb.GetAmount("HDAPK_BattlePatch"), 1, 4), (60, BaseYOffset + 10) + bob, sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_CENTER, Font.CR_WHITE, BlueAlpha);
+		sb.DrawImage(TexMan.GetName(GetDefaultByType("HDAPK_BattlePatch").Icon), (60, BaseYOffset) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER, patchAlpha, scale:(2, 2));
+		sb.DrawString(sb.pSmallFont, sb.FormatNumber(sb.GetAmount("HDAPK_BattlePatch"), 1, 4), (60, BaseYOffset + 10) + bob, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_CENTER, Font.CR_WHITE, patchAlpha);
 	}
 
 	protected action void A_TryKitAction(KitAction act) {
-		HDArmour Armor = HDArmour(FindInventory("HDArmour"));
+		HDArmour Armor = HDArmour(FindInventory("HDArmour", true));
 
 		if (!Armor) return;
 
@@ -126,7 +147,6 @@ class HDArmorPatchKit : HDWeapon
 		}
 
 		switch (act) {
-			int ArmorDurability;
 
 			case KAction_Repair:
 				int PatchKits = CountInv(invoker.GetPatchType(isMega));
@@ -136,8 +156,7 @@ class HDArmorPatchKit : HDWeapon
 					return;
 				}
 
-				ArmorDurability = invoker.GetSelectedArmorDurability();
-				if (isMega ? (ArmorDurability < (70 * 0.75)) : (ArmorDurability < 144))
+				if (invoker.GetSelectedArmorDurability() < Armor.maxperunit)
 				{
 					static const string RepairStrings[] =
 					{
@@ -196,7 +215,7 @@ class HDArmorPatchKit : HDWeapon
 						A_Log(StripStrings[random(0, StripStrings.Size() - 1)], true);
 					}
 					
-					for (int i = 0; i < 5; ++i)
+					for (int i = 0; i < 5; i++)
 					{
 						Actor a = spawn("WallChunk", pos + (0, 0, height - 24), ALLOW_REPLACE);
 						vector3 offspos = (frandom(-12, 12), frandom(-12, 12), frandom(-16, 4));
@@ -247,8 +266,8 @@ class HDArmorPatchKit : HDWeapon
 					return;
 				}
 
-				let Armor = HDArmour(FindInventory("HDArmour"));
-				if (Armor && player.cmd.buttons & BT_USER2)
+				let Armor = HDArmour(FindInventory("HDArmour", true));
+				if (Armor && player.cmd.buttons&BT_USER2)
 				{
 					if (JustPressed(BT_ATTACK))
 					{
@@ -279,7 +298,7 @@ class HDArmorPatchKit : HDWeapon
 					return;
 				}
 
-				A_WeaponReady(WRF_ALLOWUSER3 | WRF_NOFIRE | WRF_ALLOWRELOAD);
+				A_WeaponReady(WRF_ALLOWUSER3|WRF_NOFIRE|WRF_ALLOWRELOAD);
 			}
 			Goto ReadyEnd;
 
